@@ -135,7 +135,7 @@ def main():
                 st.write(f"Alokasi Lingkungan Hidup: {pulp.value(x7):20,.02f} ")
                 st.write(f"Alokasi Perumahan: {pulp.value(x8):20,.02f} ")
                 st.write(f"Alokasi Ekonomi: {pulp.value(x9):20,.02f} ")
-                st.write(f"Prediksi Pertumbuhan Ekonomi : {0.00000000000000112*pulp.value(x1) + 0.000000000000000214*pulp.value(x2) - 0.000000000000000528*pulp.value(x3) - 0.0000000000000103*pulp.value(x4) - 0.000000000000000839*pulp.value(x5) - 0.0000000000000215*pulp.value(x6) -0.0000000000000208*pulp.value(x7)+ 0.00000000000000471*pulp.value(x8) + 0.00000000000000509*pulp.value(x9) + 0.000881*ipm+ 0.0039429*IPEI - 0.0412448:20,.02f}" )
+                st.write(f"Prediksi Pertumbuhan Ekonomi : {0.00000000000000112*pulp.value(x1) + 0.000000000000000214*pulp.value(x2) - 0.000000000000000528*pulp.value(x3) - 0.0000000000000103*pulp.value(x4) - 0.000000000000000839*pulp.value(x5) - 0.0000000000000215*pulp.value(x6) -0.0000000000000208*pulp.value(x7)+ 0.00000000000000471*pulp.value(x8) + 0.00000000000000509*pulp.value(x9) + 0.000881*ipm+ 0.0039429*IPEI - 0.0412448:.02f}" )
         
         
 if __name__=='__main__':
