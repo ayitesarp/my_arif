@@ -25,7 +25,7 @@ def main():
     st.sidebar.title("Pengaturan Constraints")
     p = st.sidebar.number_input(label="Fungsi Pendidikan (dalam %)",value=20,min_value=20, max_value=100, step=1)
     k= st.sidebar.number_input(label="Fungsi Kesehatan (dalam %)",value=10,min_value=10, max_value=100, step=1)
-    l = st.sidebar.number_input(label="Fungsi Pelayanan Umum (dalam %)",value=25,min_value=1, max_value=100, step=1)
+    #l = st.sidebar.number_input(label="Fungsi Pelayanan Umum (dalam %)",value=25,min_value=1, max_value=100, step=1)
     #ipei= st.sidebar.number_input(label="IPEI Target",value=7,min_value=0, max_value=10, step=1)
         
     df = pd.read_excel('data_sumber.xlsx')
@@ -74,7 +74,7 @@ def main():
         ipm = pilihan.iloc[0,20]
 
         # Create the model
-        prob = LpProblem(name="IPEI_LP_Problem",sense=1)
+        prob = LpProblem(name="Pertumbuhan Ekonomi",sense=1)
         # Initialize the decision variables
         x1 = LpVariable(name="pendidikan", lowBound=0, cat="Continuous")
         x2 = LpVariable(name="kesehatan", lowBound=0, cat="Continuous")
@@ -89,7 +89,7 @@ def main():
         # Add the constraints to the model
         prob += (x1 >= p*totalbelanja/100, "pendidikan_constraint")
         prob += (x2 >= k*totalbelanja/100, "kesehatan_constraint")
-        prob += (x3 >= l*totalbelanja/100, "pelayanan_constraint")
+        #prob += (x3 >= l*totalbelanja/100, "pelayanan_constraint")
         # Tidak boleh turun lebih dari 5% dan naik lebih dari 10% 
         #prob += (x1 >= 0.95*didik,"pendidikan_bawah_constraint")
         #prob += (x1 <= 1.1*didik,"pendidikan_atas_constraint")
@@ -116,7 +116,7 @@ def main():
         
             
         # Add the objective function to the model
-        prob += 0.000000000000118*x1 + 0.000000000000158*x2 - 0.000000000000115*x3 + 0.000000000000145*x4 - 0.000000000000348*x5 - 0.000000000000269*x6 -0.000000000000229*x7 - 0.0000000000000477*x8 + 0.000000000000110*x9 +0.0787967*ipm+ 0.000000000502*pdrb - 0.173271
+        prob += 0.000000000000118*x1 + 0.000000000000158*x2 - 0.000000000000115*x3 + 0.000000000000145*x4 - 0.000000000000348*x5 - 0.000000000000269*x6 -0.000000000000229*x7 - 0.0000000000000477*x8 + 0.000000000000110*x9 +0.0787967*ipm - 0.173271
         # Solve the problem
         st.write(" Berapa Alokasi Belanja Fungsi yang diusulkan?")
         
