@@ -54,7 +54,7 @@ def main():
         st.write(f"Total Belanja Daerah : {pilihan.iloc[0,11]:20,.02f} ")
         st.write(f"PDRB : {pilihan.iloc[0,13]*1000000:20,.02f} ")
         st.write(f"Pertumbuhan Ekonomi : {pilihan.iloc[0,14]:.02f} ")
-        st.write(f"IPM" : {pilihan.iloc[0,21]:.02f} ")
+        st.write(f"IPM : {pilihan.iloc[0,21]:.02f} ")
         st.write(f"IPEI : {pilihan.iloc[0,25]:.02f} ")
 
 
