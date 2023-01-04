@@ -53,9 +53,9 @@ def main():
         st.write(f"Alokasi Ekonomi : {pilihan.iloc[0,4]:20,.02f} ") 
         st.write(f"Total Belanja Daerah : {pilihan.iloc[0,11]:20,.02f} ")
         st.write(f"PDRB : {pilihan.iloc[0,13]*1000000:20,.02f} ")
-        st.write(f"IPM : {pilihan.iloc[0,14]:.02f} ")
-        
-        st.write(f"IPEI : {pilihan.iloc[0,24]:.02f} ")
+        st.write(f"Pertumbuhan Ekonomi" : {pilihan.iloc[0,14]:.02f} ")
+        st.write(f"IPM" : {pilihan.iloc[0,21]:.02f} ")
+        st.write(f"IPEI : {pilihan.iloc[0,25]:.02f} ")
 
 
     with col2:
@@ -71,7 +71,9 @@ def main():
         linsos = pilihan.iloc[0,10] 
         totalbelanja = pilihan.iloc[0,11]
         pdrb = pilihan.iloc[0,13]
+        pertumbuhan_ekonomi = pilihan.iloc[0,14]
         ipm = pilihan.iloc[0,20]
+        IPEI = pilihan.iloc[0,25]
 
         # Create the model
         prob = LpProblem(name="Pertumbuhan Ekonomi",sense=1)
@@ -116,7 +118,7 @@ def main():
         
             
         # Add the objective function to the model
-        prob += 0.000000000000118*x1 + 0.000000000000158*x2 - 0.000000000000115*x3 + 0.000000000000145*x4 - 0.000000000000348*x5 - 0.000000000000269*x6 -0.000000000000229*x7 - 0.0000000000000477*x8 + 0.000000000000110*x9 +0.0787967*ipm - 0.173271
+        prob += 0.00000000000000112*x1 + 0.000000000000000214*x2 - 0.000000000000000528*x3 - 0.0000000000000103*x4 - 0.000000000000000839*x5 - 0.0000000000000215*x6 -0.0000000000000208*x7 + 0.00000000000000471*x8 + 0.00000000000000509*x9 +0.0000881*ipm + 0.0039429*IPEI + 0.0412448
         # Solve the problem
         st.write(" Berapa Alokasi Belanja Fungsi yang diusulkan?")
         
@@ -133,7 +135,7 @@ def main():
                 st.write(f"Alokasi Lingkungan Hidup: {pulp.value(x7):20,.02f} ")
                 st.write(f"Alokasi Perumahan: {pulp.value(x8):20,.02f} ")
                 st.write(f"Alokasi Ekonomi: {pulp.value(x9):20,.02f} ")
-                st.write(f"Prediksi IPEI : {0.000000000000118*pulp.value(x1) + 0.000000000000158*pulp.value(x2) - 0.000000000000115*pulp.value(x3) + 0.000000000000145*pulp.value(x4) - 0.000000000000348*pulp.value(x5) - 0.000000000000269*pulp.value(x6) -0.000000000000229*pulp.value(x7)- 0.0000000000000477*pulp.value(x8) + 0.000000000000110*pulp.value(x9) +0.0787967*ipm+ 0.000000000502*pdrb - 0.173271:20,.02f}" )
+                st.write(f"Prediksi Pertumbuhan Ekonomi : {0.00000000000000112*pulp.value(x1) + 0.000000000000000214*pulp.value(x2) - 0.000000000000000528*pulp.value(x3) - 0.0000000000000103*pulp.value(x4) - 0.000000000000000839*pulp.value(x5) - 0.0000000000000215*pulp.value(x6) -0.0000000000000208*pulp.value(x7)+ 0.00000000000000471*pulp.value(x8) + 0.00000000000000509*pulp.value(x9) + 0.000881*ipm+ 0.0039429*IPEI - 0.0412448:20,.02f}" )
         
         
 if __name__=='__main__':
